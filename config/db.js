@@ -1,5 +1,6 @@
 module.exports = {
-    'JWT_SECRET':'sayedsecret',
-    'database': 'mongodb://localhost/ecomerce-paypal'
+    'JWT_SECRET':'sayedsecret'
+    
+    //, 'database': 'mongodb://localhost/ecomerce-paypal'
   };
   
