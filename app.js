@@ -14,6 +14,7 @@ var adminRouter = require("./routes/admin")
 var userRouter = require("./routes/users")
 var productRouter = require("./routes/product")
 var paymentRouter = require("./routes/payment")
+var uploadS3File = require("./routes/s3Upload")
 
 
 // view engine setup
@@ -39,6 +40,7 @@ app.use('/api/v1', adminRouter);
 app.use('/api/v1', userRouter);
 app.use('/api/v1', productRouter);
 
+app.use('/api/v1', uploadS3File);
 
 
 
