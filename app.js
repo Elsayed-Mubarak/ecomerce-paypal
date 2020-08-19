@@ -15,6 +15,7 @@ var userRouter = require("./routes/users")
 var productRouter = require("./routes/product")
 var paymentRouter = require("./routes/payment")
 var uploadS3File = require("./routes/s3Upload")
+var brainTreeRouter = require("./routes/rainTree")
 
 
 // view engine setup
@@ -41,6 +42,7 @@ app.use('/api/v1', userRouter);
 app.use('/api/v1', productRouter);
 
 app.use('/api/v1', uploadS3File);
+app.use('/', brainTreeRouter);
 
 
 

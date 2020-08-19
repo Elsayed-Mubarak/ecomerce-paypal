@@ -102,6 +102,16 @@ exports.excutePayPalPayment = async (req, res) => {
             console.log(error.response);
             throw error;
         } else {
+            pymntDetails.transactionDetails.push(JSON.stringify(payment));
+            pymntDetails.paymentStatusHistory.push({
+                fromStatus: pymntDetails.paymentStatus,
+                toStatus: 'Approved',
+                changeAt: new Date(),
+                reason: 'after paypal send success to our backend then execute paypal.payment.excute'
+            });
+            pymntDetails.paymentStatus = 'Approved';
+            pymntDetails.save();
+
             console.log(JSON.stringify(payment));
             res.send('Success');
         }
