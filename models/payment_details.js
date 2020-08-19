@@ -56,36 +56,8 @@ var PaymentDetailsSchema = new Schema({
     feesCurrency: {
         type: String,
         default: 'USD'
-    },
-    subscriptionDetail: {
-        royalSubscriptionId: Number,
-        subscriptionDetailId: String
     }
 });
 
-PaymentDetailsSchema.pre('save', function (next) {
-    if (this.isNew) {
-        this.transactionCode = generateCode();
-        this.paymentStatusHistory = [{
-            fromStatus: this.paymentStatus,
-            toStatus: this.paymentStatus,
-            changeAt: new Date(),
-            reason: 'Start Payment Cycle from pre Save Function in model'
-        }];
-    }
-    // if (this.isModified('lastLogin')) {
-    //     this.userLoginHistory.push(this.lastLogin);
-    // }
-    return next();
-});
 
-
-function generateCode() {
-    var text = "";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789";
-    for (var i = 0; i < 25; i++)
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-    return text;
-}
-
-module.exports.PaymentDetails = mongoose.model('PaymentDetails', PaymentDetailsSchema);
+module.exports = mongoose.model('PaymentDetails', PaymentDetailsSchema);
